@@ -1,0 +1,11 @@
+# Resume Screening Demo - Requirements
+# Install with: pip install -r requirements.txt
+
+# PDF text extraction
+pdfplumber>=0.10.0
+
+# Claude API client (optional - for automated scoring)
+anthropic>=0.40.0
+
+# PDF generation (only needed to create sample resumes)
+reportlab>=4.0.0
