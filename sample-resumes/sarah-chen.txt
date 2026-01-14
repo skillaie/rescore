@@ -1,0 +1,47 @@
+Dr. Sarah Chen, PhD
+sarah.chen@email.com | linkedin.com/in/sarahchen-bio | Boston, MA
+CURRENT POSITION
+Postdoctoral Research Fellow
+Broad Institute of MIT and Harvard | 2021 – Present
+(cid:127) Developing computational pipelines for multi-modal single-cell analysis in Alzheimer's disease models
+(cid:127) Led collaborative project with 3 institutions studying glial cell heterogeneity
+(cid:127) Secured K99/R00 Pathway to Independence Award ($800,000)
+(cid:127) Mentored 2 graduate students and 1 undergraduate researcher
+EDUCATION
+PhD, Computational Biology
+University of California, San Francisco | 2016 – 2021
+(cid:127) Dissertation: "Machine Learning Approaches to Single-Cell Transcriptomic Analysis in Neurodegenerative
+Disease"
+BS, Biochemistry, Magna Cum Laude
+University of Michigan | 2012 – 2016
+PREVIOUS RESEARCH EXPERIENCE
+Graduate Researcher
+UCSF Memory and Aging Center | 2016 – 2021
+(cid:127) Developed novel clustering algorithms for single-cell RNA-seq data
+(cid:127) Established mouse colony and performed stereotaxic surgeries
+(cid:127) Collaborated with clinicians on human brain tissue analysis
+PUBLICATIONS
+1. Chen S, Martinez R, et al. (2024) "Single-cell atlas of the aging human brain." Nature Neuroscience. First
+author.
+2. Chen S, Wong K, et al. (2023) "Computational methods for spatial transcriptomics." Nature Methods.
+First author.
+3. Park J, Chen S, et al. (2023) "Microglial subtypes in neurodegeneration." Cell. Second author.
+4. Chen S, et al. (2022) "Machine learning in single-cell biology." Annual Review of Biomedical Data
+Science. First author, review.
+5. Liu M, Chen S, et al. (2021) "Astrocyte diversity in Alzheimer's disease." Neuron. Co-author.
+6. Chen S, et al. (2020) "scBioCluster: A novel clustering approach." Bioinformatics. First author.
+TECHNICAL EXPERTISE
+Computational: Python, R, single-cell analysis (Scanpy, Seurat), machine learning (PyTorch, scikit-learn),
+cloud computing (AWS, GCP)
+Experimental: Single-cell RNA-seq, spatial transcriptomics (10x Visium, MERFISH), CRISPR screening,
+mouse models, stereotaxic surgery
+Data: Large-scale dataset integration, pipeline development, statistical analysis
+AWARDS & FUNDING
+(cid:127) NIH K99/R00 Pathway to Independence Award (2023)
+(cid:127) Broad Institute NextGen Award (2022)
+(cid:127) NSF Graduate Research Fellowship (2016–2021)
+OPEN SCIENCE & COMMUNITY
+(cid:127) All code and datasets publicly available on GitHub and GEO
+(cid:127) Contributor to Scanpy open-source project
+(cid:127) Organizer, Boston Single-Cell Analysis Meetup
+(cid:127) Volunteer, STEM outreach program for underrepresented high school students

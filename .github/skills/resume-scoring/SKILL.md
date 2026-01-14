@@ -3,15 +3,6 @@ name: resume-scoring
 description: Score and evaluate scientific resumes for biomedical research positions. Use this skill when asked to review, screen, evaluate, or score CVs, resumes, or job applications for scientific or research roles. Applies a 100-point rubric covering education, research experience, publications, technical skills, and mission alignment.
 ---
 
-## Prerequisites
-
-Before scoring resumes, ensure dependencies are installed:
-```bash
-pip install -r requirements.txt
-```
-
-If you encounter import errors, run this command first.
-
 # Scientific Resume Scoring
 
 This skill evaluates scientific resumes/CVs for biomedical research positions using a structured 100-point rubric.

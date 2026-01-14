@@ -1,0 +1,34 @@
+Marcus Johnson
+m.johnson@university.edu | (555) 123-4567 | Columbus, OH
+EDUCATION
+Master of Science, Biology
+State University | 2020 – 2022
+(cid:127) Thesis: "Expression patterns of inflammatory markers in mouse tissue"
+Bachelor of Science, Biology
+Community College fi State University (Transfer) | 2016 – 2020
+EXPERIENCE
+Research Technician II
+University Medical Center, Dept of Pathology | 2022 – Present
+(cid:127) Maintain cell culture facility and support 3 research labs
+(cid:127) Perform routine immunohistochemistry and Western blots
+(cid:127) Assist graduate students with experimental protocols
+(cid:127) Manage lab inventory and ordering
+Graduate Research Assistant
+State University, Biology Dept | 2020 – 2022
+(cid:127) Learned basic microscopy and image analysis
+(cid:127) Presented poster at regional conference
+Undergraduate Research Assistant
+State University | 2019 – 2020
+(cid:127) Assisted with PCR and gel electrophoresis
+(cid:127) Maintained lab notebooks
+PUBLICATIONS
+1. Smith A, Williams B, Johnson M, et al. (2023) "Inflammatory markers in tissue repair." Journal of
+Regional Biology. Contributing author.
+SKILLS
+Laboratory: Cell culture (mammalian), Western blot, IHC, IF, basic microscopy, PCR, gel electrophoresis
+Software: Microsoft Office, basic R, ImageJ
+Other: Lab management, inventory systems
+PROFESSIONAL DEVELOPMENT
+(cid:127) Laboratory Safety Training (Completed)
+(cid:127) IACUC Animal Handling Certification (Completed)
+(cid:127) Bioinformatics Course - Coursera (In Progress)
