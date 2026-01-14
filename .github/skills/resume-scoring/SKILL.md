@@ -1,7 +1,28 @@
-# Scientific Resume Scoring Skill
+---
+name: resume-scoring
+description: Score and evaluate scientific resumes for biomedical research positions. Use this skill when asked to review, screen, evaluate, or score CVs, resumes, or job applications for scientific or research roles. Applies a 100-point rubric covering education, research experience, publications, technical skills, and mission alignment.
+---
 
-## Overview
-This skill defines how to evaluate and score scientific resumes for a biomedical research organization.
+# Scientific Resume Scoring
+
+This skill evaluates scientific resumes/CVs for biomedical research positions using a structured 100-point rubric.
+
+## When to Use This Skill
+
+Use this skill when you need to:
+- Review or screen scientific resumes or CVs
+- Score candidates for research positions
+- Compare qualifications across multiple applicants
+- Generate structured evaluation reports for hiring committees
+
+## Scoring Process
+
+1. **Extract text** from the resume (PDF or other format)
+2. **Parse sections**: Education, Experience, Publications, Skills
+3. **Score each category** using the rubric below
+4. **Document evidence** with quotes from the resume
+5. **Calculate total** and assign qualification tier
+6. **Generate report** with recommendation
 
 ## Scoring Rubric (100 points total)
 
@@ -9,11 +30,11 @@ This skill defines how to evaluate and score scientific resumes for a biomedical
 
 | Criteria | Points |
 |----------|--------|
-| PhD in directly relevant field (biology, biochemistry, biomedical sciences, etc.) | 25 |
-| PhD in related field (chemistry, physics, computational biology, etc.) | 20 |
+| PhD in directly relevant field (biology, biochemistry, biomedical sciences) | 25 |
+| PhD in related field (chemistry, physics, computational biology) | 20 |
 | MD or MD/PhD | 25 |
 | Master's in relevant field | 15 |
-| Bachelor's in relevant field with significant research experience | 10 |
+| Bachelor's with significant research experience | 10 |
 | Degree from recognized research institution | +2 bonus |
 
 ### 2. Research Experience (30 points max)
@@ -44,8 +65,6 @@ This skill defines how to evaluate and score scientific resumes for a biomedical
 
 ### 4. Technical Skills Alignment (15 points max)
 
-Score based on relevance to position requirements:
-
 | Alignment | Points |
 |-----------|--------|
 | Strong match (4+ required techniques/methods) | 15 |
@@ -64,8 +83,6 @@ Score based on relevance to position requirements:
 
 ### 5. Mission Alignment & Collaboration (10 points max)
 
-Evidence of alignment with open science and inclusive research:
-
 | Criteria | Points |
 |----------|--------|
 | Open science contributions (open-source tools, public datasets) | 3 |
@@ -82,43 +99,47 @@ Evidence of alignment with open science and inclusive research:
 | 50-64 | **Potentially Qualified** | Review if pool is limited |
 | Below 50 | **Not Qualified** | Archive for future openings |
 
-## Scoring Instructions
+## Output Format
 
-1. Read the entire resume before scoring
-2. Score each category independently
-3. Apply bonus points where criteria are met
-4. Document evidence for each score (quote from resume)
-5. Calculate total and assign tier
-6. Note any exceptional qualities not captured by rubric
+For each resume, produce a structured evaluation:
 
-## Example Scoring Output
+```markdown
+## Candidate Summary
+- **Name**: [extracted]
+- **Current Role**: [extracted]  
+- **Education**: [highest degree, institution, field]
+- **Years of Experience**: [calculated]
 
-```
-### Educational Background: 22/25
-- PhD in Molecular Biology, Stanford University (25 pts)
-- Evidence: "PhD, Molecular Biology, Stanford University, 2019"
+## Scores
 
-### Research Experience: 28/30
-- 4 years postdoc at NIH (25 pts)
-- Led independent project (+3 pts)
-- Evidence: "Postdoctoral Fellow, NIH/NINDS, 2019-2023; PI on R21 supplement"
+### Educational Background: X/25
+- [Score justification]
+- Evidence: "[quote from resume]"
 
-### Publication Record: 18/20
-- 7 peer-reviewed publications (15 pts)
-- First author on 3 papers (+3 pts)
-- Evidence: "Publications" section lists 7 papers, 3 as first author
+### Research Experience: X/30
+- [Score justification]
+- Evidence: "[quote from resume]"
 
-### Technical Skills: 13/15
-- Strong match: CRISPR, single-cell RNA-seq, computational analysis, mouse models
-- Evidence: "Expertise" section and methods in publications
+### Publication Record: X/20
+- [Score justification]
+- Evidence: "[quote from resume]"
 
-### Mission Alignment: 7/10
-- Open data sharing (+3 pts)
-- Graduate student mentorship (+3 pts)
-- Science Twitter engagement (+1 pt)
-- Evidence: "Deposited all datasets to GEO", "Mentored 3 rotation students"
+### Technical Skills: X/15
+- [Score justification]
+- Evidence: "[quote from resume]"
 
-**TOTAL: 88/100 - HIGHLY QUALIFIED**
+### Mission Alignment: X/10
+- [Score justification]
+- Evidence: "[quote from resume]"
+
+## Overall Assessment
+- **Total Score**: X/100
+- **Qualification Tier**: [tier]
+- **Key Strengths**: [2-3 points]
+- **Concerns**: [if any]
+
+## Recommendation
+[Brief recommendation for hiring committee]
 ```
 
 ## Red Flags to Note
@@ -129,11 +150,11 @@ Evidence of alignment with open science and inclusive research:
 - No evidence of collaboration or teamwork
 - Retracted publications
 
-## Bias Mitigation Checklist
+## Bias Mitigation
 
-Before finalizing score, verify:
-- [ ] Scoring based only on stated qualifications
-- [ ] International credentials evaluated fairly
-- [ ] Non-traditional career paths considered
-- [ ] Part-time or career-break periods not penalized unfairly
-- [ ] Scores consistent with other similar candidates
+Before finalizing, verify:
+- Scoring based only on stated qualifications
+- International credentials evaluated fairly
+- Non-traditional career paths considered
+- Part-time or career-break periods not penalized unfairly
+- Scores consistent with similar candidates
