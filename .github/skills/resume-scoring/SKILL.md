@@ -26,6 +26,8 @@ Use this skill when you need to:
 
 ## Scoring Rubric (100 points total)
 
+**IMPORTANT: Each category has a maximum score. Bonus points can help reach the maximum but cannot exceed it. The total score cannot exceed 100 points.**
+
 ### 1. Educational Background (25 points max)
 
 | Criteria | Points |
@@ -113,15 +115,15 @@ For each resume, produce a structured evaluation:
 ## Scores
 
 ### Educational Background: X/25
-- [Score justification]
+- [Score justification - note if bonuses were capped]
 - Evidence: "[quote from resume]"
 
 ### Research Experience: X/30
-- [Score justification]
+- [Score justification - note if bonuses were capped]
 - Evidence: "[quote from resume]"
 
 ### Publication Record: X/20
-- [Score justification]
+- [Score justification - note if bonuses were capped]
 - Evidence: "[quote from resume]"
 
 ### Technical Skills: X/15
@@ -133,7 +135,7 @@ For each resume, produce a structured evaluation:
 - Evidence: "[quote from resume]"
 
 ## Overall Assessment
-- **Total Score**: X/100
+- **Total Score**: X/100 (max 100)
 - **Qualification Tier**: [tier]
 - **Key Strengths**: [2-3 points]
 - **Concerns**: [if any]
@@ -141,6 +143,8 @@ For each resume, produce a structured evaluation:
 ## Recommendation
 [Brief recommendation for hiring committee]
 ```
+
+**Scoring Rule**: If base + bonus exceeds category max, cap at max and note "capped" (e.g., "30/30 (capped from 33)").
 
 ## Red Flags to Note
 
