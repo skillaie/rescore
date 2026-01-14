@@ -44,17 +44,35 @@ def extract_resume_text(pdf_path: str) -> str:
     return text.strip()
 
 
-def load_scoring_rubric(rubric_path: str = "skills/resume-scoring.md") -> str:
+def load_scoring_rubric(rubric_path: str = ".github/skills/resume-scoring/SKILL.md") -> str:
     """Load the scoring rubric from markdown file."""
     with open(rubric_path, 'r') as f:
         return f.read()
 
 
-def create_scoring_prompt(resume_text: str, rubric: str) -> str:
-    """Create the prompt for LLM scoring."""
-    return f"""You are a scientific resume screening agent for a biomedical research organization focused on unlocking the fundamentals of biology and building an open, inclusive future for science.
+def load_agent_instructions(agent_path: str = "AGENTS.md") -> str:
+    """Load the agent instructions from AGENTS.md."""
+    if os.path.exists(agent_path):
+        with open(agent_path, 'r') as f:
+            return f.read()
+    return ""
 
-Review the following resume and score it according to the rubric provided.
+
+def create_scoring_prompt(resume_text: str, rubric: str, agent_instructions: str = "") -> str:
+    """Create the prompt for LLM scoring."""
+    
+    # Use agent instructions if provided, otherwise use default
+    if agent_instructions:
+        base_instructions = agent_instructions
+    else:
+        base_instructions = """# Resume Screening Agent
+
+You are a scientific resume screening agent for a biomedical research organization focused on unlocking the fundamentals of biology and building an open, inclusive future for science.
+
+## Primary Task
+Review, summarize, and qualify scientific resumes/applications against defined criteria, producing structured evaluations that support fair and consistent hiring decisions."""
+    
+    return f"""{base_instructions}
 
 ## SCORING RUBRIC
 {rubric}
@@ -66,10 +84,10 @@ Review the following resume and score it according to the rubric provided.
 Score this resume following the rubric exactly. For each category:
 1. State the score (X/Y points)
 2. Quote the specific evidence from the resume that justifies the score
-3. Note any bonus points applied
+3. Note any bonus points applied (remember: bonuses cannot exceed category maximum)
 
 Then provide:
-- Total score (sum of all categories)
+- Total score (sum of all categories, max 100)
 - Qualification tier (based on the tier table in the rubric)
 - 2-3 key strengths
 - Any concerns or gaps
@@ -95,7 +113,8 @@ def score_resume_with_claude(prompt: str, api_key: str) -> str:
 
 
 def process_resume(pdf_path: str, output_dir: str = "evaluations", 
-                   api_key: str = None, rubric_path: str = "skills/resume-scoring.md") -> dict:
+                   api_key: str = None, rubric_path: str = ".github/skills/resume-scoring/SKILL.md",
+                   agent_path: str = "AGENTS.md") -> dict:
     """Process a single resume and return evaluation."""
     
     print(f"\n{'='*60}")
@@ -103,17 +122,25 @@ def process_resume(pdf_path: str, output_dir: str = "evaluations",
     print('='*60)
     
     # Extract text from PDF
-    print("  [1/4] Extracting text from PDF...")
+    print("  [1/5] Extracting text from PDF...")
     resume_text = extract_resume_text(pdf_path)
     print(f"        Extracted {len(resume_text)} characters")
     
+    # Load agent instructions
+    print("  [2/5] Loading agent instructions...")
+    agent_instructions = load_agent_instructions(agent_path)
+    if agent_instructions:
+        print(f"        Loaded from {agent_path}")
+    else:
+        print("        Using default instructions")
+    
     # Load rubric
-    print("  [2/4] Loading scoring rubric...")
+    print("  [3/5] Loading scoring rubric...")
     rubric = load_scoring_rubric(rubric_path)
     
     # Create the prompt
-    print("  [3/4] Creating evaluation prompt...")
-    prompt = create_scoring_prompt(resume_text, rubric)
+    print("  [4/5] Creating evaluation prompt...")
+    prompt = create_scoring_prompt(resume_text, rubric, agent_instructions)
     
     # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
@@ -127,7 +154,7 @@ def process_resume(pdf_path: str, output_dir: str = "evaluations",
     
     # Score with Claude if API key provided
     if api_key:
-        print("  [4/4] Sending to Claude for evaluation...")
+        print("  [5/5] Sending to Claude for evaluation...")
         try:
             evaluation = score_resume_with_claude(prompt, api_key)
             
@@ -163,7 +190,7 @@ def process_resume(pdf_path: str, output_dir: str = "evaluations",
         with open(prompt_file, 'w') as f:
             f.write(prompt)
         
-        print("  [4/4] No API key provided - saving prompt for manual use")
+        print("  [5/5] No API key provided - saving prompt for manual use")
         print(f"        Prompt saved to: {prompt_file}")
         
         return {
@@ -177,7 +204,8 @@ def process_resume(pdf_path: str, output_dir: str = "evaluations",
 def batch_process_resumes(resume_dir: str = "sample-resumes", 
                           output_dir: str = "evaluations",
                           api_key: str = None,
-                          rubric_path: str = "skills/resume-scoring.md") -> list:
+                          rubric_path: str = ".github/skills/resume-scoring/SKILL.md",
+                          agent_path: str = "AGENTS.md") -> list:
     """Process all PDF resumes in a directory."""
     
     pdf_files = sorted(Path(resume_dir).glob("*.pdf"))
@@ -194,7 +222,8 @@ def batch_process_resumes(resume_dir: str = "sample-resumes",
             str(pdf_path), 
             output_dir=output_dir,
             api_key=api_key,
-            rubric_path=rubric_path
+            rubric_path=rubric_path,
+            agent_path=agent_path
         )
         results.append(result)
     
@@ -280,8 +309,13 @@ paste into claude.ai manually.
     )
     parser.add_argument(
         "--rubric", "-r",
-        default="skills/resume-scoring.md",
-        help="Path to scoring rubric (default: skills/resume-scoring.md)"
+        default=".github/skills/resume-scoring/SKILL.md",
+        help="Path to scoring rubric (default: .github/skills/resume-scoring/SKILL.md)"
+    )
+    parser.add_argument(
+        "--agent", "-a",
+        default="AGENTS.md",
+        help="Path to agent instructions (default: AGENTS.md)"
     )
     parser.add_argument(
         "--api-key", "-k",
@@ -302,6 +336,7 @@ paste into claude.ai manually.
     print("=" * 60)
     print("SCIENTIFIC RESUME SCREENING SYSTEM")
     print("=" * 60)
+    print(f"Agent:  {args.agent}")
     print(f"Rubric: {args.rubric}")
     print(f"Output: {args.output}/")
     print(f"API:    {'Claude API (automated)' if api_key else 'None (prompt-only mode)'}")
@@ -315,7 +350,8 @@ paste into claude.ai manually.
             args.resume,
             output_dir=args.output,
             api_key=api_key,
-            rubric_path=args.rubric
+            rubric_path=args.rubric,
+            agent_path=args.agent
         )]
     else:
         if not os.path.exists(args.dir):
@@ -325,7 +361,8 @@ paste into claude.ai manually.
             resume_dir=args.dir,
             output_dir=args.output,
             api_key=api_key,
-            rubric_path=args.rubric
+            rubric_path=args.rubric,
+            agent_path=args.agent
         )
     
     # Print summary
@@ -338,4 +375,3 @@ paste into claude.ai manually.
 
 if __name__ == "__main__":
     main()
-
